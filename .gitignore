@@ -1,0 +1,4 @@
+node_modules
+.bsb.lock
+lib
+.merlin

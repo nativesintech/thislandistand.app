@@ -1,0 +1,39 @@
+{
+  "name": "reason-react-starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently \"yarn run js-watch\" \"yarn run bsb-watch\"",
+    "js-watch": "webpack-dev-server --hot --inline",
+    "bsb-build": "bsb -make-world",
+    "bsb-watch": "bsb -make-world -w",
+    "bsb-clean": "bsb -clean-world"
+  },
+  "dependencies": {
+    "bs-css": "11.0.0",
+    "normalize.css": "8.0.1",
+    "react": "16.8.5",
+    "react-dom": "16.8.5",
+    "reason-react": "0.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.7.5",
+    "@babel/preset-env": "7.7.6",
+    "@babel/preset-react": "7.7.4",
+    "babel-loader": "8.0.6",
+    "bs-platform": "7.0.1",
+    "clean-webpack-plugin": "3.0.0",
+    "concurrently": "5.0.0",
+    "css-loader": "3.2.1",
+    "html-loader": "0.5.5",
+    "html-webpack-plugin": "3.2.0",
+    "style-loader": "1.0.1",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.10",
+    "webpack-dev-server": "3.9.0"
+  },
+  "engines": {
+    "node": ">= 11.15.0"
+  }
+}
