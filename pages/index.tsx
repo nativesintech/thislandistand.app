@@ -32,9 +32,7 @@ export default function Home(props: DataProps) {
       <Head>
         <title>This Land I Stand</title>
       </Head>
-      <Layout>
-        <Main data={data?.data} error={props.error} />
-      </Layout>
+      <Layout>{/* <Main data={{}} error={props.error} /> */}</Layout>
     </>
   );
 }
