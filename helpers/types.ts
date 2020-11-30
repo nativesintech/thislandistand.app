@@ -65,3 +65,8 @@ export interface KeyCDNResponse {
     };
   };
 }
+
+export interface DataProps {
+  data?: NativeLandTerritoriesResponse;
+  error?: string;
+}

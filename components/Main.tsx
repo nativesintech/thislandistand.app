@@ -1,14 +1,6 @@
-import useSWR from "swr";
-import { NativeLandTerritoriesResponse } from "../helpers/types";
+import { DataProps } from "../helpers/types";
 
-const fetcher = (url: string) => fetch(url).then((resp) => resp.json());
-
-export const Main = () => {
-  const { data, error } = useSWR<NativeLandTerritoriesResponse, string>(
-    "/api/geolocation",
-    fetcher
-  );
-
+export const Main = ({ data, error }: DataProps) => {
   if (error)
     return (
       <main className="grid items-center justify-center grid-flow-row text-3xl text-gray-500">
