@@ -23,9 +23,7 @@ export default async function geolocation(req: any, res: any) {
         ).then((resp) => resp.json());
       });
 
-    return res
-      .status(200)
-      .json({ remoteAddress: req.connection.remoteAddress });
+    return res.status(200).json(geolocation);
   } catch (e) {
     return res.status(400).end("There was an error fetching the geolocation.");
   }
