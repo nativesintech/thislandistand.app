@@ -19,14 +19,15 @@ export default function About() {
             >
               native-land.ca
             </a>{" "}
-            by making a request to its database using the browser's{" "}
+            by making a request to its database using a lookup of the user's IP
+            with{" "}
             <a
               className="underline"
-              href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API"
+              href="https://tools.keycdn.com/geo"
               rel="noreferrer noopener"
               target="_blank"
             >
-              Geolocation API
+              KeyCDN
             </a>
             .
           </p>
@@ -51,7 +52,7 @@ export default function About() {
             </a>
             .
           </p>
-          <h2 className="text-3xl text-gray-600">FAQs</h2>
+          <h2 className="text-3xl text-gray-500">FAQs</h2>
           <p className="prose">
             Why isn't Osage rendering correctly? This might be due to the fact
             that you don't have the Osage font downloaded on your device. Go to{" "}
