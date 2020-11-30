@@ -1,45 +1,35 @@
 import useSWR from "swr";
-import {
-  NativeLandTerritoriesResponse,
-  Position,
-  PositionError,
-} from "../types";
+import { NativeLandTerritoriesResponse } from "../helpers/types";
 
-function fetcher(): Promise<NativeLandTerritoriesResponse> {
-  return new Promise<Position>((resolve, reject) => {
-    function onSuccess(pos: Position) {
-      resolve(pos);
-    }
-
-    navigator.geolocation.getCurrentPosition(onSuccess, reject);
-  }).then((data: Position) => {
-    // Promises naturally flatten nested promise values 😱
-    // Returning this therefore returns a flattened value
-    return fetch(
-      `https://native-land.ca/api/index.php?maps=territories&position=${data.coords.latitude},${data.coords.longitude}`
-    ).then((resp) => resp.json());
-  });
-}
+const fetcher = (url: string) => fetch(url).then((resp) => resp.json());
 
 export const Main = () => {
-  const { data, error } = useSWR<NativeLandTerritoriesResponse, PositionError>(
-    "geolocation",
+  const { data, error } = useSWR<NativeLandTerritoriesResponse, string>(
+    "/api/geolocation",
     fetcher
   );
 
   if (error)
     return (
-      <main className="grid items-center justify-center grid-flow-row ">
-        Error
+      <main className="grid items-center justify-center grid-flow-row text-3xl text-gray-500">
+        {error}
       </main>
     );
 
   if (!data)
     return (
-      <main className="grid items-center justify-center grid-flow-row ">
-        Please allow location access in order to determine territories
+      <main className="grid items-center justify-center grid-flow-row text-3xl text-gray-500">
+        Loading...
       </main>
     );
+
+  if (data.length === 0) {
+    return (
+      <main className="grid items-center justify-center grid-flow-row text-3xl text-gray-500">
+        There is no documented traditional territory in your area at this time.
+      </main>
+    );
+  }
 
   return (
     <main className="flex items-center justify-center p-8">
