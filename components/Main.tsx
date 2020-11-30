@@ -37,7 +37,8 @@ export const Main = () => {
   if (!data)
     return (
       <main className="grid items-center justify-center grid-flow-row ">
-        Please allow location access in order to determine territories
+        This app only works on desktop devices at the moment. Please allow
+        location access in order to determine territories.
       </main>
     );
 
