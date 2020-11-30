@@ -67,9 +67,10 @@ export interface KeyCDNResponse {
 }
 
 export interface DataProps {
-  data?: {
-    data: NativeLandTerritoriesResponse;
-    remoteAddress: string;
-  };
+  data: NativeLandTerritoriesResponse;
   error?: string;
+}
+
+export interface DebugProps {
+  remoteAddress: string;
 }

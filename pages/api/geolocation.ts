@@ -25,7 +25,7 @@ export default async function geolocation(req: any, res: any) {
 
     return res
       .status(200)
-      .json({ data: geolocation, remoteAddress: req.connection.remoteAddress });
+      .json({ remoteAddress: req.connection.remoteAddress });
   } catch (e) {
     return res.status(400).end("There was an error fetching the geolocation.");
   }
