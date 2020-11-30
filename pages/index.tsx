@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { GetServerSidePropsContext } from "next";
+import useSWR from "swr";
 
 import { Main } from "../components/Main";
 import { Layout } from "../components/Layout";
@@ -9,6 +10,8 @@ import {
   DataProps,
 } from "../helpers/types";
 import { NATIVE_LAND_API_BASE_URL } from "../helpers/constants";
+
+const fetcher = (url: string) => fetch(url).then((resp) => resp.json());
 
 export default function Home(props: DataProps) {
   return (
@@ -28,6 +31,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     process.env.NODE_ENV === "development"
       ? process.env?.localIP ?? ""
       : context.req.connection?.remoteAddress ?? "";
+
+  console.info({
+    env: process.env,
+    remoteAddress: context.req.connection.remoteAddress,
+    ip,
+  });
 
   try {
     const geolocation: NativeLandTerritoriesResponse = await fetch(
