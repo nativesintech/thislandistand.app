@@ -23,7 +23,7 @@ export const Main = () => {
       </main>
     );
 
-  if (data.length === 0) {
+  if (data && data.length === 0) {
     return (
       <main className="grid items-center justify-center grid-flow-row text-3xl text-gray-500">
         There is no documented traditional territory in your area at this time.
