@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           property="og:image"
-          content="https://thislandistand.app/logo.svg"
+          content="https://thislandistand.app/logo.png"
         />
 
         <meta property="twitter:card" content="summary_large_image" />
@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           property="twitter:image"
-          content="https://thislandistand.app/logo.svg"
+          content="https://thislandistand.app/logo.png"
         />
 
         <link
