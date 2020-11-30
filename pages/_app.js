@@ -19,7 +19,10 @@ function MyApp({ Component, pageProps }) {
           property="og:description"
           content="A desktop app that tells you the traditional and/or contemporary lands you reside on. Powered by native-land.ca."
         />
-        <meta property="og:image" content="/logo.svg" />
+        <meta
+          property="og:image"
+          content="https://thislandistand.app/logo.svg"
+        />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://thislandistand.app/" />
@@ -28,7 +31,10 @@ function MyApp({ Component, pageProps }) {
           property="twitter:description"
           content="A desktop app that tells you the traditional and/or contemporary lands you reside on. Powered by native-land.ca."
         />
-        <meta property="twitter:image" content="/logo.svg" />
+        <meta
+          property="twitter:image"
+          content="https://thislandistand.app/logo.svg"
+        />
 
         <link
           rel="apple-touch-icon"
