@@ -16,6 +16,7 @@ const fetcher = (url: string) => fetch(url).then((resp) => resp.json());
 export default function Home(props: DataProps) {
   const { data, error } = useSWR("api/geolocation", fetcher, {
     initialData: props,
+    refreshInterval: 1000,
   });
 
   console.log({ data, error });
