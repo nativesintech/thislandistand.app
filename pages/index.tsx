@@ -14,12 +14,18 @@ import { NATIVE_LAND_API_BASE_URL } from "../helpers/constants";
 const fetcher = (url: string) => fetch(url).then((resp) => resp.json());
 
 export default function Home(props: DataProps) {
-  const { data, error } = useSWR("api/geolocation", fetcher, {
-    initialData: props,
-    refreshInterval: 1000,
-  });
+  const { data, error } = useSWR<DataProps, string>(
+    "api/geolocation",
+    fetcher,
+    {
+      initialData: props,
+      refreshInterval: 1000,
+    }
+  );
 
-  console.log({ data, error });
+  console.log({ data, error, remoteAddress: data?.data?.remoteAddress });
+
+  const base: NativeLandTerritoriesResponse = [];
 
   return (
     <>
@@ -27,7 +33,7 @@ export default function Home(props: DataProps) {
         <title>This Land I Stand</title>
       </Head>
       <Layout>
-        <Main data={props.data} error={props.error} />
+        <Main data={data?.data} error={props.error} />
       </Layout>
     </>
   );
