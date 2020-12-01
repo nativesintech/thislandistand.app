@@ -1,5 +1,5 @@
-import geoip from "geoip-lite";
-import fetch from "node-fetch";
+const geoip = require("geoip-lite");
+const fetch = require("node-fetch");
 
 /*
   import { GeoIpLiteLookup } from "../types";
