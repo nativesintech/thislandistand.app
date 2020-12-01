@@ -16,6 +16,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
       <footer className="grid items-center grid-cols-2 p-2 pl-6 text-gray-600 sm:grid-cols-3">
         <div>
           <img
+            alt="Builds by Netlify"
             className="inline-block"
             src="/netlify-light.svg"
             width={116}
@@ -33,6 +34,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
             Natives in Tech
           </a>
           <img
+            alt="Natives in Tech Logo"
             className="inline-block ml-2"
             src="/natives_in_tech.svg"
             height={20}
