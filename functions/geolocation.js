@@ -1,8 +1,10 @@
 import geoip from "geoip-lite";
 import fetch from "node-fetch";
 
-import { GeoIpLiteLookup } from "../types";
-import { APIGatewayProxyEvent, APIGatewayProxyCallback } from "aws-lambda";
+/*
+  import { GeoIpLiteLookup } from "../types";
+  import { APIGatewayProxyEvent, APIGatewayProxyCallback } from "aws-lambda";
+*/
 
 exports.handler = async function (
   event /* APIGatewayProxyEvent */,
