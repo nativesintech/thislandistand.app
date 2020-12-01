@@ -6,13 +6,22 @@ exports.handler = async function (event, _context) {
   const lookup = geoip.lookup(clientIp);
   const [lat, long] = lookup.ll;
 
-  const resp = await fetch(
-    `https://native-land.ca/api/index.php?maps=territories&position=${lat},${long}`
-  );
-  const json = await resp.json();
+  try {
+    const resp = await fetch(
+      `https://native-land.ca/api/index.php?maps=territories&position=${lat},${long}`
+    );
+    const json = await resp.json();
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify(json),
-  };
+    return {
+      statusCode: 200,
+      body: JSON.stringify(json),
+    };
+  } catch (e) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify(
+        `There was an error fetching territories: ${new Error(e)}`
+      ),
+    };
+  }
 };
