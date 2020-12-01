@@ -1,16 +1,16 @@
-import { APIGatewayProxyEvent, APIGatewayProxyCallback } from "aws-lambda";
 import geoip from "geoip-lite";
 import fetch from "node-fetch";
 
 import { GeoIpLiteLookup } from "../types";
+import { APIGatewayProxyEvent, APIGatewayProxyCallback } from "aws-lambda";
 
 exports.handler = async function (
-  event: APIGatewayProxyEvent,
-  _context: unknown,
-  _callback: APIGatewayProxyCallback
+  event /* APIGatewayProxyEvent */,
+  _context /* unknown */,
+  _callback /* APIGatewayProxyCallback */
 ) {
   const clientIp = event.headers["client-ip"];
-  const lookup: GeoIpLiteLookup = geoip.lookup(clientIp);
+  const lookup /* GeoIpLiteLookup */ = geoip.lookup(clientIp);
   const [lat, long] = lookup.ll;
 
   try {
