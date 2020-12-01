@@ -1,4 +1,5 @@
 module.exports = {
+  target: "severless",
   exportPathMap: async function () {
     return {
       "/": { page: "/" },
