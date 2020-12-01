@@ -19,16 +19,7 @@ export default function About() {
             >
               native-land.ca
             </a>{" "}
-            by making a request to its database using the browser's{" "}
-            <a
-              className="underline"
-              href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Geolocation API
-            </a>
-            .
+            by making a request to its database using the user's IP address.
           </p>
           <p className="prose">
             This is a project of{" "}

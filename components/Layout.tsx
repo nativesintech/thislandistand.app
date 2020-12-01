@@ -13,22 +13,34 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 
       {children}
 
-      <footer className="flex items-center justify-center p-2 space-x-2 text-center text-gray-600 border-2">
-        Made with ❤️ by{" "}
-        <a
-          className="ml-2 underline"
-          href="https://nativesintech.org/"
-          rel="noreferrer noopener"
-          target="_blank"
-        >
-          Natives in Tech
-        </a>
-        <img
-          className="inline-block"
-          src="/natives_in_tech.svg"
-          height={20}
-          width={20}
-        />
+      <footer className="grid items-center grid-cols-2 p-2 pl-6 text-gray-600 sm:grid-cols-3">
+        <div>
+          <img
+            alt="Builds by Netlify"
+            className="inline-block"
+            src="/netlify-light.svg"
+            width={116}
+            height={53}
+          />
+        </div>
+        <div className="sm:text-center">
+          Made with ❤️ by{" "}
+          <a
+            className="underline"
+            href="https://nativesintech.org/"
+            rel="noreferrer noopener"
+            target="_blank"
+          >
+            Natives in Tech
+          </a>
+          <img
+            alt="Natives in Tech Logo"
+            className="inline-block ml-2"
+            src="/natives_in_tech.svg"
+            height={20}
+            width={20}
+          />
+        </div>
       </footer>
     </>
   );

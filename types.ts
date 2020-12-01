@@ -38,3 +38,15 @@ export interface PositionError {
   readonly POSITION_UNAVAILABLE: number;
   readonly TIMEOUT: number;
 }
+
+export interface GeoIpLiteLookup {
+  range: [number, number];
+  country: string;
+  region: string;
+  eu: string;
+  timezone: string;
+  city: string;
+  ll: [number, number];
+  metro: number;
+  area: number;
+}

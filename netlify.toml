@@ -1,0 +1,6 @@
+[[plugins]]
+package = "netlify-plugin-cache-nextjs"
+
+[build]
+  functions = "functions"
+
