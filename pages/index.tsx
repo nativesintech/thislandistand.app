@@ -23,14 +23,3 @@ export default function Home(props: Props) {
     </>
   );
 }
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const clientIP = requestIp.getClientIp(context.req);
-  const geo = geoip.lookup(clientIP);
-
-  return {
-    props: {
-      geo,
-    },
-  };
-}
