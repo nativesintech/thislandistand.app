@@ -109,6 +109,13 @@ function MyApp({ Component, pageProps }) {
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff"></meta>
+
+        <script
+          async
+          defer
+          data-website-id="0c9317f0-3d18-4aa1-8f49-958a0bdf0aad"
+          src="https://analytics.nativesintech.org/umami.js"
+        ></script>
       </Head>
       <Component {...pageProps} />
     </>
