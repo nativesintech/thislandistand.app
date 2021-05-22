@@ -12,7 +12,16 @@ exports.handler = async function (
   _callback /* APIGatewayProxyCallback */
 ) {
   const clientIp = event.headers["client-ip"];
+
   const lookup /* GeoIpLiteLookup */ = geoip.lookup(clientIp);
+
+  if (lookup === null) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify(`could not do a proper lookup of client ip.`),
+    };
+  }
+
   const [lat, long] = lookup.ll;
 
   try {

@@ -115,7 +115,7 @@ function MyApp({ Component, pageProps }) {
           defer
           data-website-id="0c9317f0-3d18-4aa1-8f49-958a0bdf0aad"
           src="https://analytics.nativesintech.org/umami.js"
-        ></script>
+        />
       </Head>
       <Component {...pageProps} />
     </>
