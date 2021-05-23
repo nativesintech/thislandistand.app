@@ -2,9 +2,11 @@ import axios, { AxiosResponse } from "axios";
 import { useGeolocation } from "@anthonyhumphreys/hooks";
 import React from "react";
 import * as RD from "@devexperts/remote-data-ts";
+import * as O from "fp-ts/lib/Option";
 import { NativeLandTerritoriesResponse } from "../types";
 
 export const useNativeLandCA = () => {
+  const [agent, setAgent] = React.useState<O.Option<string>>(O.none);
   const [data, setData] = React.useState<
     RD.RemoteData<string, NativeLandTerritoriesResponse>
   >(RD.initial);
@@ -38,5 +40,11 @@ export const useNativeLandCA = () => {
     }
   }, [position]);
 
-  return { data } as const;
+  React.useEffect(() => {
+    if (navigator.userAgent) {
+      setAgent(O.some(navigator.userAgent));
+    }
+  }, []);
+
+  return { data, agent } as const;
 };

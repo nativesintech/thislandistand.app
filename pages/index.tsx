@@ -4,7 +4,7 @@ import { Layout } from "../components/Layout";
 import { useNativeLandCA } from "../hooks/useNativeLandCA";
 
 export default function Home() {
-  const { data } = useNativeLandCA();
+  const { data, agent } = useNativeLandCA();
 
   return (
     <>
@@ -12,7 +12,7 @@ export default function Home() {
         <title>This Land I Stand</title>
       </Head>
       <Layout>
-        <Main data={data} />
+        <Main data={data} agent={agent} />
       </Layout>
     </>
   );

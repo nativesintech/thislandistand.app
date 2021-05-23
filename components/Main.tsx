@@ -1,12 +1,14 @@
 import { NativeLandTerritoriesResponse } from "../types";
 import * as RD from "@devexperts/remote-data-ts";
 import { pipe } from "fp-ts/lib/function";
+import * as O from "fp-ts/lib/Option";
 
 type Props = {
   data: RD.RemoteData<string, NativeLandTerritoriesResponse>;
+  agent: O.Option<string>;
 };
 
-export const Main = ({ data }: Props) => {
+export const Main = ({ data, agent }: Props) => {
   return pipe(
     data,
     RD.fold(
@@ -16,8 +18,23 @@ export const Main = ({ data }: Props) => {
         </main>
       ),
       () => (
-        <main className="grid items-center justify-center grid-flow-row ">
-          Loading...
+        <main className="grid items-center justify-center grid-flow-row text-center ">
+          <section>
+            Loading...
+            {pipe(
+              agent,
+              O.map((a) => /safari/i.test(a)),
+              O.fold(
+                () => null,
+                () => (
+                  <small className="block mt-4">
+                    It appears you are using Safari. This app may not work on
+                    Safari on iOS.
+                  </small>
+                )
+              )
+            )}
+          </section>
         </main>
       ),
       (e) => (
