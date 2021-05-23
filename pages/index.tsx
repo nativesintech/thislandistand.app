@@ -12,12 +12,7 @@ export default function Home() {
         <title>This Land I Stand</title>
       </Head>
       <Layout>
-        {typeof data === "string" && (
-          <div className="flex items-center justify-center">
-            There was an error: {data}
-          </div>
-        )}
-        {Array.isArray(data) && <Main data={data} error={error} />}
+        <Main data={data} error={error} />
       </Layout>
     </>
   );

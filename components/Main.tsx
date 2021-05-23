@@ -2,14 +2,14 @@ import { NativeLandTerritoriesResponse } from "../types";
 
 type Props = {
   data?: NativeLandTerritoriesResponse;
-  error?: string;
+  error?: Error;
 };
 
 export const Main = ({ data, error }: Props) => {
   if (error)
     return (
-      <main className="grid items-center justify-center grid-flow-row ">
-        {error}
+      <main className="grid items-center justify-center grid-flow-row capitalize">
+        {error.message}
       </main>
     );
 
