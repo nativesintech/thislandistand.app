@@ -1,32 +1,42 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
-import useSWR from "swr";
+import axios, { AxiosResponse } from "axios";
+import { useGeolocation } from "@anthonyhumphreys/hooks";
+import React from "react";
+import * as RD from "@devexperts/remote-data-ts";
 import { NativeLandTerritoriesResponse } from "../types";
 
-const fetcher = async (url: string) => {
-  const result = await axios
-    .get(url)
-    .then((res: AxiosResponse<NativeLandTerritoriesResponse>) => res.data)
-    .catch((e: AxiosError<string>) => {
-      const error = new Error("an error occurred while fetching data");
-      if (e.response) {
-        error.message = `an error was returned from the server: ${e.response.data}`;
-      } else if (e.request) {
-        error.message = "a response was not received from server";
-      } else {
-        error.message = "an unknown error occurred";
-      }
-
-      throw error;
-    });
-
-  return result;
-};
-
 export const useNativeLandCA = () => {
-  const { data, error } = useSWR<NativeLandTerritoriesResponse, Error>(
-    "/.netlify/functions/geolocation",
-    fetcher
-  );
+  const [data, setData] = React.useState<
+    RD.RemoteData<string, NativeLandTerritoriesResponse>
+  >(RD.initial);
+  const { position, positionError, positionLoading } = useGeolocation();
 
-  return { data, error };
+  React.useEffect(() => {
+    if (positionLoading) {
+      setData(RD.pending);
+    }
+  }, [positionLoading]);
+
+  React.useEffect(() => {
+    if (positionError) {
+      setData(RD.failure(JSON.stringify(positionError)));
+    }
+  }, [positionError]);
+
+  React.useEffect(() => {
+    if (position) {
+      setData(RD.pending);
+      axios
+        .get(
+          `https://native-land.ca/api/index.php?maps=territories&position=${position.coords.latitude},${position.coords.longitude}`
+        )
+        .then((resp: AxiosResponse<NativeLandTerritoriesResponse>) => {
+          setData(RD.success(resp.data));
+        })
+        .catch((e) => {
+          setData(RD.failure(JSON.stringify(e)));
+        });
+    }
+  }, [position]);
+
+  return { data } as const;
 };
