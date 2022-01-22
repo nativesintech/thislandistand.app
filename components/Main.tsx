@@ -23,7 +23,7 @@ export const Main = ({ data, agent }: Props) => {
             Loading...
             {pipe(
               agent,
-              O.filter((a) => /safari/i.test(a)),
+              O.filter((a) => /safari/i.test(a) && !/chrom\w+\//i.test(a)),
               O.fold(
                 () => null,
                 () => (
