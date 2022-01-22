@@ -21,9 +21,13 @@ export const Main = ({ data, agent }: Props) => {
         <main className="grid items-center justify-center grid-flow-row text-center ">
           <section>
             Loading...
+            <small className="block mt-4">
+              If this message appears for more than 10 seconds, please make sure 
+              location services are enabled on your device.
+            </small>
             {pipe(
               agent,
-              O.filter((a) => /safari/i.test(a)),
+              O.filter((a) => /safari/i.test(a) && !/chrom\w+\//i.test(a)),
               O.fold(
                 () => null,
                 () => (
